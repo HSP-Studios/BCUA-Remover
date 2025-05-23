@@ -44,6 +44,16 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
+REM Parse command-line arguments for silent mode
+for %%i in (%*) do (
+    REM Check for "-" arguments
+    if /I "%%i"=="--silent" set "BCUA_SILENT=1"
+    if /I "%%i"=="-s" set "BCUA_SILENT=1"
+    REM Check for "/" arguments
+    if /I "%%i"=="/silent" set "BCUA_SILENT=1"
+    if /I "%%i"=="/s" set "BCUA_SILENT=1"
+)
+
 REM Remove registry keys (manual uninstall)
 reg delete "HKLM\SYSTEM\CurrentControlSet\services\bc-cloud-wfp" /f >nul 2>&1
 reg delete "HKLM\SYSTEM\CurrentControlSet\services\bcua-service" /f >nul 2>&1
@@ -71,6 +81,7 @@ for /f "tokens=*" %%k in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVer
 )
 
 echo Unified Agent removal steps complete.
+if "%BCUA_SILENT%"=="1" goto :END_SCRIPT
 echo It is recommended to restart your computer to complete the removal.
 :RESTART_PROMPT
 echo Press Y to restart now, or N to exit without restarting.
