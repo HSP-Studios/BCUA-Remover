@@ -4,15 +4,6 @@
 
 BCUA Remover is a tool that automates the removal of Blue Coat Unified Agent (BCUA) and its related components from a Windows system. This tool is designed for IT administrators and advanced users who need to fully uninstall BCUA, including registry entries, services, files, and processes.
 
-## Features
-- Checks for administrator privileges and relaunches as admin if needed
-- Deletes BCUA-related registry keys and values (including manual uninstall keys)
-- Searches and removes BCUA entries in HKEY_CLASSES_ROOT and HKLM
-- Terminates BCUA-related processes (`bcua-service.exe`, `bcua-notifier.exe`)
-- Deletes BCUA-related directories and files from ProgramData, Program Files, and System32 drivers
-- Removes Unified Agent entries from the Uninstall registry
-- Prompts the user to restart the computer to complete removal
-
 ## Usage
 1. **Run as Administrator:**
    - Right-click `main.bat` and select **Run as administrator**.
@@ -43,7 +34,6 @@ This process ensures that all traces of BCUA are removed from the system, follow
 ## Important Notes
 - This script is based on the official BCUA removal instructions: [Broadcom Knowledge Base Article 169376](https://knowledge.broadcom.com/external/article/169376/manually-uninstall-unified-agent.html)
 - Use with caution. The script makes permanent changes to the registry and deletes files/directories related to BCUA.
-- Ensure you have backups or system restore points before running.
 
 ## License
 This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](LICENSE) file for details.
