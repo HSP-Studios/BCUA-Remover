@@ -34,7 +34,6 @@ This process ensures that all traces of BCUA are removed from the system, follow
 ## Important Notes
 - This script is based on the official BCUA removal instructions: [Broadcom Knowledge Base Article 169376](https://knowledge.broadcom.com/external/article/169376/manually-uninstall-unified-agent.html)
 - Use with caution. The script makes permanent changes to the registry and deletes files/directories related to BCUA.
-- Ensure you have backups or system restore points before running.
 
 ## License
 This project is licensed under the GNU Affero General Public License v3.0. See the [LICENSE](LICENSE) file for details.
