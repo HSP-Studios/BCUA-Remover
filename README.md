@@ -2,7 +2,7 @@
 
 <a href="https://discord.gg/qG75UuW4jY"><img src="https://img.shields.io/static/v1?message=Discord&logo=discord&label=&color=7289DA&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="discord logo"/> </a>
 
-BCUA Remover is a tool that automates the removal of Blue Coat Unified Agent (BCUA) and its related components from a Windows system. This tool is designed for IT administrators and advanced users who need to fully uninstall BCUA, including registry entries, services, files, and processes.
+BCUA Remover is a user-friendly tool that automates the removal of Blue Coat Unified Agent (BCUA) and its related components from a Windows system. This tool is designed for anyone who needs to fully uninstall BCUA, including registry entries, services, files, and processes—no advanced technical knowledge required.
 
 ## Usage
 1. **Run as Administrator:**
