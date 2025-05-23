@@ -26,7 +26,7 @@ REM                   and System32 drivers.
 REM                 - Removes Unified Agent entries from the Uninstall registry.
 REM                 - Prompts the user to restart the computer to complete removal.
 REM
-REM Usage       : Run as administrator. Follow the on-screen prompt to restart or exit.
+REM Usage       : Run as administrator. Follow the on-screen prompts.
 REM
 REM Note        : This script is based on the official BCUA removal instructions.
 REM               (https://knowledge.broadcom.com/external/article/169376/manually-uninstall-unified-agent.html)
