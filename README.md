@@ -1,6 +1,6 @@
-<h1> <p "font-size:200px;"><img align="left" src="https://github.com/SoftFever/OrcaSlicer/blob/main/resources/images/OrcaSlicer.ico" width="100"> Orca Slicer</p> </h1>
+<h1> <p "font-size:200px;"><img align="left" src="https://github.com/HSP-Studios/BCUA-Remover/blob/main/resources/images/BCUA-Remover-LogoSVG_Dark.svg" alt="" width="100"> BCUA Remover</p> </h1>
 
-<a href="https://discord.gg/P4VE9UY9gJ"><img src="https://img.shields.io/static/v1?message=Discord&logo=discord&label=&color=7289DA&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="discord logo"/> </a>
+<a href="https://discord.gg/qG75UuW4jY"><img src="https://img.shields.io/static/v1?message=Discord&logo=discord&label=&color=7289DA&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="discord logo"/> </a>
 
 BCUA Remover is a tool that automates the removal of Blue Coat Unified Agent (BCUA) and its related components from a Windows system. This tool is designed for IT administrators and advanced users who need to fully uninstall BCUA, including registry entries, services, files, and processes.
 
