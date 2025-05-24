@@ -26,7 +26,7 @@ REM                   and System32 drivers.
 REM                 - Removes Unified Agent entries from the Uninstall registry.
 REM                 - Prompts the user to restart the computer to complete removal.
 REM
-REM Usage       : Run as administrator. Follow the on-screen prompt to restart or exit.
+REM Usage       : Run as administrator. Follow the on-screen prompts.
 REM
 REM Note        : This script is based on the official BCUA removal instructions.
 REM               (https://knowledge.broadcom.com/external/article/169376/manually-uninstall-unified-agent.html)
@@ -42,6 +42,16 @@ if %errorlevel% neq 0 (
     echo Attempting to relaunch as administrator...
     powershell -Command "Start-Process '%~f0' -Verb RunAs"
     exit /b
+)
+
+REM Parse command-line arguments for silent mode
+for %%i in (%*) do (
+    REM Check for "-" arguments
+    if /I "%%i"=="--silent" set "BCUA_SILENT=1"
+    if /I "%%i"=="-s" set "BCUA_SILENT=1"
+    REM Check for "/" arguments
+    if /I "%%i"=="/silent" set "BCUA_SILENT=1"
+    if /I "%%i"=="/s" set "BCUA_SILENT=1"
 )
 
 REM Remove registry keys (manual uninstall)
@@ -71,6 +81,7 @@ for /f "tokens=*" %%k in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVer
 )
 
 echo Unified Agent removal steps complete.
+if "%BCUA_SILENT%"=="1" goto :END_SCRIPT
 echo It is recommended to restart your computer to complete the removal.
 :RESTART_PROMPT
 echo Press Y to restart now, or N to exit without restarting.
