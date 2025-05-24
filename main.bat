@@ -1,3 +1,5 @@
+@echo off
+
 REM ============================================================================
 REM BCUA Remover by HSP Studios
 REM Copyright (C) 2025 HSP Studios
@@ -32,8 +34,6 @@ REM Note        : This script is based on the official BCUA removal instructions
 REM               (https://knowledge.broadcom.com/external/article/169376/manually-uninstall-unified-agent.html)
 REM               
 REM ============================================================================
-
-@echo off
 
 REM Check for admin rights
 openfiles >nul 2>&1
