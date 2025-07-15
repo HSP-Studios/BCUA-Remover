@@ -44,32 +44,51 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
+echo Starting Blue Coat Unified Agent (BCUA) removal process...
+echo.
+
+echo [1/6] Removing BCUA registry keys and services...
 REM Remove registry keys (manual uninstall)
 reg delete "HKLM\SYSTEM\CurrentControlSet\services\bc-cloud-wfp" /f >nul 2>&1
 reg delete "HKLM\SYSTEM\CurrentControlSet\services\bcua-service" /f >nul 2>&1
 reg delete "HKLM\SYSTEM\CurrentControlSet\services\bcua-wfp" /f >nul 2>&1
 reg delete "HKLM\SOFTWARE\Blue Coat Systems" /f >nul 2>&1
 
+echo [2/6] Searching and removing BCUA entries in HKEY_CLASSES_ROOT...
 REM Search and remove BCUA entries in HKEY_CLASSES_ROOT
 for /f "tokens=*" %%k in ('reg query "HKCR" /f "bcua" /s 2^>nul ^| findstr /i "bcua"') do reg delete "%%k" /f >nul 2>&1
 
+echo [3/6] Terminating BCUA processes...
 REM Kill bcua-service.exe and bcua-notifier.exe processes
 for /f "skip=3 tokens=2" %%a in ('tasklist /fi "imagename eq bcua-service.exe" 2^>nul') do taskkill /PID %%a /F >nul 2>&1
 for /f "skip=3 tokens=2" %%a in ('tasklist /fi "imagename eq bcua-notifier.exe" 2^>nul') do taskkill /PID %%a /F >nul 2>&1
 
+echo [4/6] Deleting BCUA directories and files...
 REM Delete directories and files
 rmdir /s /q "C:\ProgramData\bcua" >nul 2>&1
 rmdir /s /q "C:\Program Files\Blue Coat Systems" >nul 2>&1
 del /f /q "C:\Windows\System32\drivers\bcua-wfp.sys" >nul 2>&1
 
+echo [5/6] Searching registry for remaining BCUA entries...
 REM Search registry for BCUA and delete related keys
 for /f "tokens=*" %%k in ('reg query HKLM /f "bcua" /s 2^>nul ^| findstr /i "bcua"') do reg delete "%%k" /f >nul 2>&1
 
+echo [6/6] Removing Unified Agent from Uninstall registry...
 REM Remove Unified Agent from Uninstall registry
 for /f "tokens=*" %%k in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" 2^>nul') do (
   reg query "%%k" /v "DisplayName" 2>nul | findstr /i "Unified Agent" >nul && reg delete "%%k" /f >nul 2>&1
 )
 
+echo.
+echo ================================================================================
+echo BCUA Removal Complete!
+echo ================================================================================
+echo All Blue Coat Unified Agent components have been successfully removed:
+echo   - Registry keys and services deleted
+echo   - BCUA processes terminated
+echo   - Program files and directories removed
+echo   - Uninstall entries cleaned up
+echo.
 echo Unified Agent removal steps complete.
 echo It is recommended to restart your computer to complete the removal.
 :RESTART_PROMPT
