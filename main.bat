@@ -1,3 +1,4 @@
+@echo off
 REM ============================================================================
 REM BCUA Remover by HSP Studios
 REM Copyright (C) 2025 HSP Studios
